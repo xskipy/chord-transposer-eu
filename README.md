@@ -6,6 +6,9 @@ text.
 All credit goes to [ddycai/chord-transposer](https://github.com/ddycai/chord-transposer)
 This fork only changes the notation of `Bb -> B`, `B -> H` which is used in the EU.
 
+## Plans for future
+- Add options object to the transposer so it can support both notations US and EU and eventually make a pull request to the original package.
+
 ## Usage
 
 Install via npm:
