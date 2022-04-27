@@ -1,8 +1,10 @@
-Chord Transposer
+Chord Transposer [EU]
 ========
 
 Javascript/TypeScript library for transposing musical chords within arbitrary
 text.
+All credit goes to [ddycai/chord-transposer](https://github.com/ddycai/chord-transposer)
+This fork only changes the notation of `Bb -> B`, `B -> H` which is used in the EU.
 
 ## Usage
 
@@ -30,7 +32,7 @@ To a certain key signature:
 > Transposer.transpose(
 "G        C           Am7            C        D7       G\n" +
 "Saying I love you is not the words I want to hear from you").toKey('F').toString()
-'F        Bb          Gm7            Bb       C7       F\n' +
+'F        B          Gm7            B       C7       F\n' +
 'Saying I love you is not the words I want to hear from you'
 ```
 
@@ -48,7 +50,7 @@ To a certain key signature:
 > Transposer.transpose(
 "G        C           Am7            C        D7       G\n" +
 "Saying I love you is not the words I want to hear from you").down(4).toString()
-'Eb       Ab          Fm7            Ab       Bb7      Eb\n' +
+'Eb       Ab          Fm7            Ab       B7      Eb\n' +
 'Saying I love you is not the words I want to hear from you'
 ```
 
@@ -58,7 +60,7 @@ If the key signature is not specified, the key will be inferred from the first
 chord.
 
 ```javascript
-> Transposer.transpose('F  C7 Bb').toKey('D').toString()
+> Transposer.transpose('F  C7 B').toKey('D').toString()
 'D  A7 G'
 
 > Transposer.transpose('Fm  C Ab').toKey('Dm').toString()
@@ -68,10 +70,10 @@ chord.
 ### Supported Chords
 
 ```javascript
-> Transposer.transpose('A Bmaj CM Dm/F E7/G# Gsus4').toKey('F').toString()
+> Transposer.transpose('A Hmaj CM Dm/F E7/G# Gsus4').toKey('F').toString()
 'F Gmaj AbM Bbm/Db C7/E  Ebsus4'
 
-> Transposer.transpose('Abm Bbmin C- Ddim Ebaug F+ Gb+5').toKey('Dm').toString()
+> Transposer.transpose('Abm Bmin C- Ddim Ebaug F+ Gb+5').toKey('Dm').toString()
 'Dm  Emin  Gb- Abdim Aaug  Cb+ C+5'
 ```
 
@@ -82,7 +84,7 @@ When text is passed into `transpose`, it is parsed into `Token[][]` where
 however you like:
 
 ```javascript
-> Transposer.transpose('C  G  Am  G7/B  C    F  C   F   G7\n'+
+> Transposer.transpose('C  G  Am  G7/H  C    F  C   F   G7\n'+
                        'O Canada  Our home and native land').tokens
 [
   [
@@ -92,7 +94,7 @@ however you like:
     '  ',
     Chord { root: 'A', suffix: 'm', bass: undefined },
     '  ',
-    Chord { root: 'G', suffix: '7', bass: 'B' },
+    Chord { root: 'G', suffix: '7', bass: 'H' },
     '  ',
     Chord { root: 'C', suffix: '', bass: undefined },
     '    ',

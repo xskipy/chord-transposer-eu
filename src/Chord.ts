@@ -4,7 +4,7 @@ import * as XRegExp from "xregexp";
  * The rank for each possible chord. Rank is the distance in semitones from C.
  */
 export const CHORD_RANKS: Map<string, number> = new Map([
-  ["B#", 0],
+  ["H#", 0],
   ["C", 0],
   ["C#", 1],
   ["Db", 1],
@@ -22,19 +22,19 @@ export const CHORD_RANKS: Map<string, number> = new Map([
   ["Ab", 8],
   ["A", 9],
   ["A#", 10],
-  ["Bb", 10],
+  ["B", 10],
+  ["H", 11],
   ["Cb", 11],
-  ["B", 11],
 ]);
 
 // Regex for recognizing chords
-const TRIAD_PATTERN = "(M|maj|major|m|min|minor|dim|sus|dom|aug|\\+|-)";
+const TRIAD_PATTERN = "(M|maj|major|m|mi|min|minor|dim|sus|dom|aug|\\+|-)";
 const ADDED_TONE_PATTERN = "(([/\\.\\+]|add)?\\d+[\\+-]?)";
 const SUFFIX_PATTERN = `(?<suffix>\\(?${TRIAD_PATTERN}?${ADDED_TONE_PATTERN}*\\)?)`;
-const BASS_PATTERN = "(\\/(?<bass>[A-G](#|b)?))?";
+const BASS_PATTERN = "(\\/(?<bass>[A-H](#|b)?))?";
 
-export const ROOT_PATTERN = "(?<root>[A-G](#|b)?)";
-export const MINOR_PATTERN = "(m|min|minor)+";
+export const ROOT_PATTERN = "(?<root>[A-H](#|b)?)";
+export const MINOR_PATTERN = "(m|mi|min|minor)+";
 
 const CHORD_REGEX = XRegExp(
   `^${ROOT_PATTERN}${SUFFIX_PATTERN}${BASS_PATTERN}$`

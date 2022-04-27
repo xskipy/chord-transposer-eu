@@ -14,7 +14,7 @@ const FLAT_SCALE = [
   "G",
   "Ab",
   "A",
-  "Bb",
+  "B",
   "Cb",
 ];
 
@@ -31,17 +31,17 @@ const SHARP_SCALE = [
   "G#",
   "A",
   "A#",
-  "B",
+  "H",
 ];
 
 // Chromatic scale for F# major which includes E#.
 export const F_SHARP_SCALE = SHARP_SCALE.map(note => note === "F" ? "E#" : note);
 
 // Chromatic scale for C# major which includes E# and B#.
-export const C_SHARP_SCALE = F_SHARP_SCALE.map(note => note === "C" ? "B#" : note);
+export const C_SHARP_SCALE = F_SHARP_SCALE.map(note => note === "C" ? "H#" : note);
 
 // Chromatic scale for Gb major which includes Cb.
-export const G_FLAT_SCALE = FLAT_SCALE.map(note => note === "B" ? "Cb" : note);
+export const G_FLAT_SCALE = FLAT_SCALE.map(note => note === "H" ? "Cb" : note);
 
 // Chromatic scale for Cb major which includes Cb and Fb.
 export const C_FLAT_SCALE = G_FLAT_SCALE.map(note => note === "E" ? "Fb" : note);
@@ -66,10 +66,10 @@ class KeySignatureEnum extends Enum<KeySignature> {
     new KeySignature('C', 'Am', KeyType.SHARP, 0, SHARP_SCALE);
 
   Db: KeySignature =
-    new KeySignature('Db', 'Bbm', KeyType.FLAT, 1, FLAT_SCALE);
+    new KeySignature('Db', 'Bm', KeyType.FLAT, 1, FLAT_SCALE);
 
   D: KeySignature =
-    new KeySignature('D', 'Bm', KeyType.SHARP, 2, SHARP_SCALE);
+    new KeySignature('D', 'Hm', KeyType.SHARP, 2, SHARP_SCALE);
 
   Eb: KeySignature =
     new KeySignature('Eb', 'Cm', KeyType.FLAT, 3, FLAT_SCALE);
@@ -95,11 +95,11 @@ class KeySignatureEnum extends Enum<KeySignature> {
   A: KeySignature =
     new KeySignature('A', 'F#m', KeyType.SHARP, 9, SHARP_SCALE);
 
-  Bb: KeySignature =
-    new KeySignature('Bb', 'Gm', KeyType.FLAT, 10, FLAT_SCALE);
-
   B: KeySignature =
-    new KeySignature('B', 'G#m', KeyType.SHARP, 11, SHARP_SCALE);
+    new KeySignature('B', 'Gm', KeyType.FLAT, 10, FLAT_SCALE);
+
+  H: KeySignature =
+    new KeySignature('H', 'G#m', KeyType.SHARP, 11, SHARP_SCALE);
 
   // Unconventional key signatures:
 
@@ -168,7 +168,7 @@ class KeySignatureEnum extends Enum<KeySignature> {
 export function guessKeySignature(chord: Chord): KeySignature {
   let signature = chord.root;
   if (chord.isMinor()) {
-    signature += 'm';
+    signature += 'mi';
   }
   return KeySignatures.valueOf(signature);
 }
